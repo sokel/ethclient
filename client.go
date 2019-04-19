@@ -84,6 +84,7 @@ func (r *Receipt) UnmarshalJSON(input []byte) error {
 type Transaction struct {
 	*types.Transaction
 	To common.Address
+	From common.Address
 }
 
 func (tx *Transaction) UnmarshalJSON(input []byte) error {
@@ -95,6 +96,7 @@ func (tx *Transaction) UnmarshalJSON(input []byte) error {
 
 	type extendedTransaction struct {
 		To string `json:"to"`
+		From string `json:"from"`
 	}
 	var dec extendedTransaction
 	if err := json.Unmarshal(input, &dec); err != nil {
@@ -104,7 +106,11 @@ func (tx *Transaction) UnmarshalJSON(input []byte) error {
 	if dec.To == "" {
 		dec.To = "0x0"
 	}
+	if dec.From == "" {
+		return fmt.Errorf("unmarshalled from field is empty")
+	}
 	tx.To = common.HexToAddress(dec.To)
+	tx.From = common.HexToAddress(dec.From)
 
 	return nil
 }

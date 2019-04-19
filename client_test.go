@@ -85,6 +85,18 @@ func TestParseTo(t *testing.T) {
 	assert.Equal(t, strings.ToLower(rec.To.String()), "0x6c88e07debd749476636ac4841063130df6c62bf")
 }
 
+func TestParseFrom(t *testing.T)  {
+	raw := []byte(blockPattern)
+
+	rec := &Receipt{
+		Receipt:     &types.Receipt{},
+		BlockNumber: 0,
+	}
+	err := rec.UnmarshalJSON(raw)
+	require.NoError(t, err)
+	assert.Equal(t, strings.ToLower(rec.From.String()), "0x4ac11b6ed0f118414db41b41dade342368f925ca")
+}
+
 func TestParseToWithNull(t *testing.T) {
 	raw := []byte(`{
 "blockHash":"0x1929947310bd7aae9509b99f8986297969e7450e116712c85d9c77a959bb8037",
