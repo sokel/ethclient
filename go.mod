@@ -12,6 +12,7 @@ require (
 	github.com/ethereum/go-ethereum v1.8.23
 	github.com/fjl/memsize v0.0.0-20180929194037-2a09253e352a // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
+	github.com/golang/mock v1.2.0
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/hashicorp/golang-lru v0.5.1 // indirect
