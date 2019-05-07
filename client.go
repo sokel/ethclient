@@ -71,9 +71,6 @@ func (r *Receipt) UnmarshalJSON(input []byte) error {
 	r.To = common.HexToAddress(dec.To)
 
 	txIndexInt := big.NewInt(0).SetBytes(common.Hex2Bytes(dec.TransactionIndex))
-	if err != nil {
-		return err
-	}
 	if !txIndexInt.IsUint64() {
 		return fmt.Errorf("transaction index overflows uint64")
 	}
@@ -83,7 +80,7 @@ func (r *Receipt) UnmarshalJSON(input []byte) error {
 
 type Transaction struct {
 	*types.Transaction
-	To common.Address
+	To   common.Address
 	From common.Address
 }
 
@@ -95,7 +92,7 @@ func (tx *Transaction) UnmarshalJSON(input []byte) error {
 	}
 
 	type extendedTransaction struct {
-		To string `json:"to"`
+		To   string `json:"to"`
 		From string `json:"from"`
 	}
 	var dec extendedTransaction

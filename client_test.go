@@ -85,7 +85,7 @@ func TestParseTo(t *testing.T) {
 	assert.Equal(t, strings.ToLower(rec.To.String()), "0x6c88e07debd749476636ac4841063130df6c62bf")
 }
 
-func TestParseFrom(t *testing.T)  {
+func TestParseFrom(t *testing.T) {
 	raw := []byte(blockPattern)
 
 	rec := &Receipt{
